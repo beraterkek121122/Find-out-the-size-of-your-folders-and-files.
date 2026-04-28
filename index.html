@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,14 +18,12 @@
             overflow-x: hidden;
         }
 
-        /* Ana container */
         .app-container {
             max-width: 1600px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* Başlık */
         .header {
             text-align: center;
             padding: 30px;
@@ -51,7 +49,6 @@
             font-size: 1.1em;
         }
 
-        /* Kontrol paneli */
         .control-panel {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
@@ -111,7 +108,6 @@
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
 
-        /* Progress bar */
         .progress-container {
             margin-top: 20px;
             display: none;
@@ -163,7 +159,6 @@
             font-size: 14px;
         }
 
-        /* Bubble canvas */
         .bubble-container {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 30px;
@@ -182,7 +177,6 @@
             cursor: pointer;
         }
 
-        /* Info panel */
         .info-panel {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -261,7 +255,6 @@
             float: right;
         }
 
-        /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -272,7 +265,6 @@
             50% { transform: scale(1.05); opacity: 1; }
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -287,7 +279,6 @@
             border-radius: 10px;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .app-container {
                 padding: 10px;
@@ -308,21 +299,21 @@
     <div class="app-container">
         <div class="header">
             <h1>🎈 Folder Bubble Visualizer Pro</h1>
-            <p>İç içe geçmiş baloncuklarla klasör boyutlarını görselleştirin</p>
+            <p>Visualize folder sizes with nested bubbles</p>
         </div>
 
         <div class="control-panel">
             <div class="folder-select-area">
                 <input type="file" id="folderInput" class="folder-input" webkitdirectory directory multiple>
-                <button class="btn" onclick="analyzeFolders()">🔍 Analiz Et</button>
-                <button class="btn btn-secondary" onclick="clearAll()">🗑 Temizle</button>
+                <button class="btn" onclick="analyzeFolders()">🔍 Analyze</button>
+                <button class="btn btn-secondary" onclick="clearAll()">🗑 Clear</button>
             </div>
             
             <div class="progress-container" id="progressContainer">
                 <div class="progress-bar">
                     <div class="progress-fill" id="progressFill">0%</div>
                 </div>
-                <div class="status-text" id="statusText">Hazır...</div>
+                <div class="status-text" id="statusText">Ready...</div>
             </div>
         </div>
 
@@ -332,40 +323,40 @@
 
         <div class="info-panel">
             <div class="info-card">
-                <h3>📊 İstatistikler</h3>
+                <h3>📊 Statistics</h3>
                 <div class="stats">
                     <div class="stat-item">
                         <div class="stat-value" id="totalSize">0</div>
-                        <div class="stat-label">Toplam Boyut</div>
+                        <div class="stat-label">Total Size</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value" id="folderCount">0</div>
-                        <div class="stat-label">Klasör Sayısı</div>
+                        <div class="stat-label">Folder Count</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value" id="largestFolder">-</div>
-                        <div class="stat-label">En Büyük Klasör</div>
+                        <div class="stat-label">Largest Folder</div>
                     </div>
                 </div>
             </div>
 
             <div class="info-card">
-                <h3>📁 Klasör Listesi</h3>
+                <h3>📁 Folder List</h3>
                 <div class="folder-list" id="folderList">
                     <div style="text-align: center; color: rgba(255,255,255,0.5);">
-                        Henüz analiz yapılmadı
+                        Not analyzed yet
                     </div>
                 </div>
             </div>
 
             <div class="info-card">
-                <h3>🎨 Renk Kodları</h3>
+                <h3>🎨 Color Codes</h3>
                 <div style="display: flex; flex-direction: column; gap: 10px;">
-                    <div><span style="display: inline-block; width: 30px; height: 30px; background: #ff6b6b; border-radius: 50%; margin-right: 10px;"></span> Çok Büyük (>70%)</div>
-                    <div><span style="display: inline-block; width: 30px; height: 30px; background: #ffa500; border-radius: 50%; margin-right: 10px;"></span> Büyük (40-70%)</div>
-                    <div><span style="display: inline-block; width: 30px; height: 30px; background: #4ecdc4; border-radius: 50%; margin-right: 10px;"></span> Orta (20-40%)</div>
-                    <div><span style="display: inline-block; width: 30px; height: 30px; background: #45b7d1; border-radius: 50%; margin-right: 10px;"></span> Küçük (10-20%)</div>
-                    <div><span style="display: inline-block; width: 30px; height: 30px; background: #96ceb4; border-radius: 50%; margin-right: 10px;"></span> Çok Küçük (<10%)</div>
+                    <div><span style="display: inline-block; width: 30px; height: 30px; background: #ff6b6b; border-radius: 50%; margin-right: 10px;"></span> Very Large (>70%)</div>
+                    <div><span style="display: inline-block; width: 30px; height: 30px; background: #ffa500; border-radius: 50%; margin-right: 10px;"></span> Large (40-70%)</div>
+                    <div><span style="display: inline-block; width: 30px; height: 30px; background: #4ecdc4; border-radius: 50%; margin-right: 10px;"></span> Medium (20-40%)</div>
+                    <div><span style="display: inline-block; width: 30px; height: 30px; background: #45b7d1; border-radius: 50%; margin-right: 10px;"></span> Small (10-20%)</div>
+                    <div><span style="display: inline-block; width: 30px; height: 30px; background: #96ceb4; border-radius: 50%; margin-right: 10px;"></span> Very Small (<10%)</div>
                 </div>
             </div>
         </div>
@@ -378,7 +369,6 @@
         let ctx = canvas.getContext('2d');
         let bubbles = [];
 
-        // Canvas boyutlandırma
         function resizeCanvas() {
             const container = canvas.parentElement;
             canvas.width = container.clientWidth - 60;
@@ -391,7 +381,6 @@
             drawBubbles();
         });
 
-        // Dosya seçimi
         document.getElementById('folderInput').addEventListener('change', function(e) {
             const files = Array.from(e.target.files);
             if (files.length > 0) {
@@ -400,7 +389,6 @@
             }
         });
 
-        // Klasör boyutlarını hesapla
         async function getFolderSizes(files) {
             if (files.length === 0) return [];
             
@@ -433,7 +421,6 @@
             return results.slice(0, 15);
         }
 
-        // Boyut formatlama
         function formatSize(bytes) {
             if (bytes === 0) return '0 B';
             const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
@@ -441,7 +428,6 @@
             return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
         }
 
-        // Renk oluştur (gradient)
         function getGradientColor(ratio, x, y, radius) {
             let gradient = ctx.createRadialGradient(x, y, radius * 0.2, x, y, radius);
             
@@ -470,26 +456,21 @@
             return gradient;
         }
 
-        // Baloncuk çiz
         function drawBubble(x, y, radius, color, name, size, isChild = false) {
-            // Blur efekti için shadow
             ctx.shadowBlur = 20;
             ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
             
-            // Ana baloncuk
             ctx.beginPath();
             ctx.arc(x, y, radius, 0, Math.PI * 2);
             ctx.fillStyle = color;
             ctx.fill();
             
-            // Parlama efekti
             ctx.shadowBlur = 10;
             ctx.beginPath();
             ctx.arc(x - radius * 0.3, y - radius * 0.3, radius * 0.2, 0, Math.PI * 2);
             ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
             ctx.fill();
             
-            // Kenarlık
             ctx.shadowBlur = 0;
             ctx.beginPath();
             ctx.arc(x, y, radius, 0, Math.PI * 2);
@@ -497,7 +478,6 @@
             ctx.lineWidth = 2;
             ctx.stroke();
             
-            // İç içe baloncuklar için alt baloncuklar
             if (!isChild && radius > 40) {
                 const childRadius = radius * 0.4;
                 const angle = Date.now() / 1000;
@@ -512,7 +492,6 @@
                 ctx.restore();
             }
             
-            // Metin (sadece büyük baloncuklara)
             if (radius > 35) {
                 ctx.font = `${Math.max(12, radius * 0.15)}px "Segoe UI"`;
                 ctx.fillStyle = 'white';
@@ -535,7 +514,6 @@
             }
         }
 
-        // Tüm baloncukları çiz
         function drawBubbles() {
             if (!ctx || bubbles.length === 0) {
                 if (bubbles.length === 0) {
@@ -543,7 +521,7 @@
                     ctx.font = '20px "Segoe UI"';
                     ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
                     ctx.textAlign = 'center';
-                    ctx.fillText('📁 Bir klasör seçin ve "Analiz Et"但onuna tıklayın', 
+                    ctx.fillText('📁 Select a folder and click the "Analyze" button', 
                                 canvas.width / 2, canvas.height / 2);
                 }
                 return;
@@ -551,14 +529,12 @@
             
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Arka plan gradient
             const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
             gradient.addColorStop(0, 'rgba(102, 126, 234, 0.1)');
             gradient.addColorStop(1, 'rgba(118, 75, 162, 0.1)');
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Baloncukları çiz (büyükten küçüğe)
             const sortedBubbles = [...bubbles].sort((a, b) => b.radius - a.radius);
             
             for (const bubble of sortedBubbles) {
@@ -568,7 +544,6 @@
             }
         }
 
-        // Baloncuk pozisyonlarını hesapla (force-directed layout)
         function calculateBubblePositions(folders, maxSize) {
             const positions = [];
             const width = canvas.width;
@@ -584,17 +559,13 @@
                 const folder = folders[i];
                 const ratio = folder.size / maxSize;
                 
-                // Ana baloncuk boyutu
                 const mainRadius = 40 + (ratio * 80);
                 
-                // Pozisyon (spiral veya dairesel)
                 let x, y;
                 if (count <= 5) {
-                    // Az sayıda baloncuk için dairesel düzen
                     x = centerX + Math.cos(angle) * radius;
                     y = centerY + Math.sin(angle) * radius;
                 } else {
-                    // Çok sayıda baloncuk için spiral düzen
                     const t = i / count;
                     const r = radius * t;
                     const a = angle * 2;
@@ -615,25 +586,22 @@
             return positions;
         }
 
-        // Ana analiz fonksiyonu
         async function analyzeFolders() {
             const files = Array.from(document.getElementById('folderInput').files);
             
             if (files.length === 0) {
-                alert('Lütfen önce bir klasör seçin!');
+                alert('Please select a folder first!');
                 return;
             }
             
-            // Progress bar'ı göster
             const progressContainer = document.getElementById('progressContainer');
             const progressFill = document.getElementById('progressFill');
             const statusText = document.getElementById('statusText');
             
             progressContainer.style.display = 'block';
             progressFill.style.width = '0%';
-            statusText.innerHTML = '📊 Klasörler analiz ediliyor...';
+            statusText.innerHTML = '📊 Analyzing folders...';
             
-            // Progress animasyonu
             let progress = 0;
             const interval = setInterval(() => {
                 progress += 5;
@@ -644,16 +612,15 @@
             }, 100);
             
             try {
-                // Klasörleri analiz et
                 const folders = await getFolderSizes(files);
                 
                 clearInterval(interval);
                 progressFill.style.width = '100%';
                 progressFill.innerHTML = '100%';
-                statusText.innerHTML = '✅ Analiz tamamlandı! Baloncuklar oluşturuluyor...';
+                statusText.innerHTML = '✅ Analysis complete! Generating bubbles...';
                 
                 if (folders.length === 0) {
-                    statusText.innerHTML = '⚠️ Alt klasör bulunamadı!';
+                    statusText.innerHTML = '⚠️ No subfolders found!';
                     return;
                 }
                 
@@ -661,12 +628,10 @@
                 const maxSize = folders[0].size;
                 const totalSize = folders.reduce((sum, f) => sum + f.size, 0);
                 
-                // İstatistikleri güncelle
                 document.getElementById('totalSize').innerHTML = formatSize(totalSize);
                 document.getElementById('folderCount').innerHTML = folders.length;
                 document.getElementById('largestFolder').innerHTML = folders[0].name;
                 
-                // Klasör listesini güncelle
                 const folderListDiv = document.getElementById('folderList');
                 folderListDiv.innerHTML = '';
                 folders.forEach((folder, index) => {
@@ -677,24 +642,23 @@
                         <div class="folder-name">${folder.name}</div>
                         <div class="folder-size">${formatSize(folder.size)}</div>
                         <div style="font-size: 0.8em; color: rgba(255,255,255,0.5);">
-                            📄 ${folder.fileCount} dosya
+                            📄 ${folder.fileCount} files
                         </div>
                     `;
                     folderListDiv.appendChild(item);
                 });
                 
-                // Baloncuk pozisyonlarını hesapla
                 resizeCanvas();
                 setTimeout(() => {
                     bubbles = calculateBubblePositions(folders, maxSize);
                     drawBubbles();
                     startAnimation();
-                    statusText.innerHTML = '✅ Hazır! Baloncukların üzerine tıklayın.';
+                    statusText.innerHTML = '✅ Ready! Click bubbles for details.';
                 }, 500);
                 
             } catch (error) {
-                console.error('Hata:', error);
-                statusText.innerHTML = '❌ Hata oluştu: ' + error.message;
+                console.error('Error:', error);
+                statusText.innerHTML = '❌ Error occurred: ' + error.message;
             } finally {
                 setTimeout(() => {
                     progressContainer.style.display = 'none';
@@ -702,30 +666,25 @@
             }
         }
         
-        // Baloncuk highlight
         function highlightFolder(folderName) {
             const bubble = bubbles.find(b => b.name === folderName);
             if (bubble) {
-                // Highlight efekti
                 ctx.save();
                 ctx.shadowBlur = 30;
                 ctx.shadowColor = 'gold';
                 drawBubble(bubble.x, bubble.y, bubble.radius + 10, 'gold', bubble.name, bubble.size);
                 ctx.restore();
                 
-                // 2 saniye sonra normal haline dön
                 setTimeout(() => drawBubbles(), 2000);
             }
         }
         
-        // Baloncuk animasyonu
         function startAnimation() {
             if (animationId) cancelAnimationFrame(animationId);
             
             let time = 0;
             function animate() {
                 time += 0.02;
-                // Baloncukların hafifçe hareket etmesi
                 bubbles.forEach((bubble, index) => {
                     const offsetX = Math.sin(time + index) * 5;
                     const offsetY = Math.cos(time * 0.7 + index) * 5;
@@ -742,7 +701,6 @@
             animate();
         }
         
-        // Temizle
         function clearAll() {
             folderData = [];
             bubbles = [];
@@ -752,17 +710,16 @@
             document.getElementById('totalSize').innerHTML = '0';
             document.getElementById('folderCount').innerHTML = '0';
             document.getElementById('largestFolder').innerHTML = '-';
-            document.getElementById('folderList').innerHTML = '<div style="text-align: center; color: rgba(255,255,255,0.5);">Henüz analiz yapılmadı</div>';
-            document.getElementById('statusText').innerHTML = 'Hazır...';
+            document.getElementById('folderList').innerHTML = '<div style="text-align: center; color: rgba(255,255,255,0.5);">Not analyzed yet</div>';
+            document.getElementById('statusText').innerHTML = 'Ready...';
             
             ctx.font = '20px "Segoe UI"';
             ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
             ctx.textAlign = 'center';
-            ctx.fillText('📁 Bir klasör seçin ve "Analiz Et"但onuna tıklayın', 
+            ctx.fillText('📁 Select a folder and click the "Analyze" button', 
                         canvas.width / 2, canvas.height / 2);
         }
         
-        // Canvas tıklama olayı
         canvas.addEventListener('click', (e) => {
             const rect = canvas.getBoundingClientRect();
             const scaleX = canvas.width / rect.width;
@@ -770,21 +727,19 @@
             const mouseX = (e.clientX - rect.left) * scaleX;
             const mouseY = (e.clientY - rect.top) * scaleY;
             
-            // Tıklanan baloncuğu bul
             for (const bubble of bubbles) {
                 const dx = mouseX - bubble.x;
                 const dy = mouseY - bubble.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
                 if (distance <= bubble.radius) {
-                    alert(`📁 ${bubble.name}\n💾 Boyut: ${formatSize(bubble.size)}\n📄 Dosya sayısı: ${bubble.fileCount || '?'}`);
+                    alert(`📁 ${bubble.name}\n💾 Size: ${formatSize(bubble.size)}\n📄 File count: ${bubble.fileCount || '?'}`);
                     highlightFolder(bubble.name);
                     break;
                 }
             }
         });
         
-        // Başlangıç
         resizeCanvas();
         clearAll();
     </script>
